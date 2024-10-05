@@ -26,5 +26,11 @@ public class Player : MonoBehaviour
         {
             bag.transform.localScale = Vector3.Scale(bag.transform.localScale, new Vector3(0.9f, 0.9f, 0.9f));
         }
+
+        Present present = other.gameObject.GetComponent<Present>();
+        if (present != null)
+        {
+            GameObject.Destroy(present.gameObject);
+        }
     }
 }
