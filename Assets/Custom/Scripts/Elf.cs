@@ -24,4 +24,13 @@ public class Elf : MonoBehaviour
     {
         navMeshAgent.SetDestination(target.position);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Player player = other.gameObject.GetComponent<Player>();
+        if (player != null)
+        {
+            Debug.Log("Player!");
+        }
+    }
 }
