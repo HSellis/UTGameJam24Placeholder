@@ -2393,6 +2393,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1590477023}
+    - target: {fileID: 2969474245951562477, guid: 12ba3f5858e4dfb44a33d56559da07a4, type: 3}
+      propertyPath: centerPoint
+      value: 
+      objectReference: {fileID: 1590477023}
     - target: {fileID: 3010541409494010885, guid: 12ba3f5858e4dfb44a33d56559da07a4, type: 3}
       propertyPath: m_Layer
       value: 6
