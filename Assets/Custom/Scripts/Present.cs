@@ -9,11 +9,15 @@ public class Present : MonoBehaviour
     public float floatHeight = 0.5f;  // How high/low the object floats
 
     private Vector3 startPosition;
+    private RandomAudioPlayer randomAudioPlayer;
+
+    public AudioClip[] presentOpenClips;
 
     // Start is called before the first frame update
     void Start()
     {
         startPosition = transform.localPosition;
+        randomAudioPlayer = GetComponent<RandomAudioPlayer>();
     }
 
     // Update is called once per frame
@@ -37,5 +41,11 @@ public class Present : MonoBehaviour
         // Create a smooth up and down motion using a sine wave
         float newY = startPosition.y + Mathf.Sin(Time.time * floatSpeed) * floatHeight;
         transform.localPosition = new Vector3(transform.localPosition.x, newY, transform.localPosition.z);
+    }
+
+    public void CollectPresent()
+    {
+        randomAudioPlayer.PlayRandomClip(presentOpenClips);
+        Destroy(gameObject, 0.5f);
     }
 }

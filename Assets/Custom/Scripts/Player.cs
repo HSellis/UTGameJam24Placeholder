@@ -42,8 +42,8 @@ public class Player : MonoBehaviour
         Present present = other.gameObject.GetComponent<Present>();
         if (present != null)
         {
-            Destroy(present.gameObject);
-            ScaleBag(2f);
+            present.CollectPresent();
+            ScaleBag(1.2f);
 
             spawner.SpawnPresentsAndElves();
         }
