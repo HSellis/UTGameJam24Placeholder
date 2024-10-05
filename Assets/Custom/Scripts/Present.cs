@@ -13,7 +13,7 @@ public class Present : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startPosition = transform.position;
+        startPosition = transform.localPosition;
     }
 
     // Update is called once per frame
@@ -29,13 +29,13 @@ public class Present : MonoBehaviour
     void RotateObject()
     {
         // Rotate the object based on rotation speed and time
-        transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
+        transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
     }
 
     void FloatObject()
     {
         // Create a smooth up and down motion using a sine wave
         float newY = startPosition.y + Mathf.Sin(Time.time * floatSpeed) * floatHeight;
-        transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+        transform.localPosition = new Vector3(transform.localPosition.x, newY, transform.localPosition.z);
     }
 }

@@ -5,7 +5,15 @@ using UnityEngine.AI;
 
 public class Player : MonoBehaviour
 {
+    public static Player Instance { get; private set; }
+
     public GameObject bag;
+    public Spawner spawner;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +40,8 @@ public class Player : MonoBehaviour
         {
             Destroy(present.gameObject);
             ScaleBag(1.1f);
+
+            spawner.SpawnPresentsAndElves();
         }
     }
 
