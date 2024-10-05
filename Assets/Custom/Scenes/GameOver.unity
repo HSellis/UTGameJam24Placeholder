@@ -843,7 +843,7 @@ GameObject:
   - component: {fileID: 1899701370}
   - component: {fileID: 1899701369}
   m_Layer: 5
-  m_Name: QuitButton
+  m_Name: BackToMenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -945,7 +945,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1066190154, guid: 342a8c961834a6c4bb12945a2723a3f6, type: 3}
+  m_Sprite: {fileID: 1563244050, guid: cc745e3880d506047bba7a75c5dd44ec, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -976,7 +976,7 @@ GameObject:
   - component: {fileID: 1931549273}
   - component: {fileID: 1931549272}
   m_Layer: 5
-  m_Name: StartButton
+  m_Name: TryAgainButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1078,7 +1078,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 923516352, guid: 3bff5522055f080409a52a97ea5d860e, type: 3}
+  m_Sprite: {fileID: 519522535, guid: 15aea4316e7f86741882c2dcce31bb84, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
