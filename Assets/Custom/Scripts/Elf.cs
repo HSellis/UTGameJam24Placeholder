@@ -26,6 +26,7 @@ public class Elf : MonoBehaviour
 
     private RandomAudioPlayer randomAudioPlayer;
     public AudioClip[] deathAudioClips;
+    public AudioClip[] angryAudioClips;
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +59,7 @@ public class Elf : MonoBehaviour
 
             if (CanSeePlayer())
             {
+                randomAudioPlayer.PlayRandomClip(angryAudioClips);
                 state = 2;
             }
         }
