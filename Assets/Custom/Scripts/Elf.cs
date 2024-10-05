@@ -30,7 +30,7 @@ public class Elf : MonoBehaviour
         Player player = other.gameObject.GetComponent<Player>();
         if (player != null)
         {
-            Debug.Log("Player!");
+            //Debug.Log("Player!");
         }
     }
 }

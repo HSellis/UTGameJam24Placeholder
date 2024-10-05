@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class Player : MonoBehaviour
 {
+    public GameObject bag;
 
     // Start is called before the first frame update
     void Start()
@@ -18,4 +19,12 @@ public class Player : MonoBehaviour
         
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        Elf elf = other.gameObject.GetComponent<Elf>();
+        if (elf != null)
+        {
+            bag.transform.localScale = Vector3.Scale(bag.transform.localScale, new Vector3(0.9f, 0.9f, 0.9f));
+        }
+    }
 }
