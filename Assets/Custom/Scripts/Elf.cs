@@ -24,7 +24,10 @@ public class Elf : MonoBehaviour
 
     private float currentAngle = 0f;
 
+    public float explosionForce = 250;
+
     private RandomAudioPlayer randomAudioPlayer;
+    private Rigidbody rb;
     public AudioClip[] deathAudioClips;
     public AudioClip[] angryAudioClips;
 
@@ -34,6 +37,7 @@ public class Elf : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         randomAudioPlayer = GetComponent<RandomAudioPlayer>();
+        rb = GetComponent<Rigidbody>();
 
         playerTransform = Player.Instance.transform;
         state = 1;
@@ -55,7 +59,11 @@ public class Elf : MonoBehaviour
             }
 
             // Move the agent to the next position along the circle
-            MoveToPointOnCircle();
+            if (centerPoint != null)
+            {
+                MoveToPointOnCircle();
+
+            }
 
             if (CanSeePlayer())
             {
@@ -65,7 +73,10 @@ public class Elf : MonoBehaviour
         }
         else
         {
-            navMeshAgent.SetDestination(playerTransform.position);
+            if (navMeshAgent.enabled)
+            {
+                navMeshAgent.SetDestination(playerTransform.position);
+            }
         }
     }
 
@@ -79,7 +90,10 @@ public class Elf : MonoBehaviour
         );
 
         // Move the agent towards the next point
-        navMeshAgent.SetDestination(nextPoint);
+        if (navMeshAgent.enabled)
+        {
+            navMeshAgent.SetDestination(nextPoint);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -87,7 +101,8 @@ public class Elf : MonoBehaviour
         Player player = other.gameObject.GetComponent<Player>();
         if (player != null)
         {
-
+            navMeshAgent.enabled = false;
+            rb.AddExplosionForce(explosionForce, player.transform.position - Vector3.up * 1f, 5);
             randomAudioPlayer.PlayRandomClip(deathAudioClips);
             Destroy(gameObject, 0.75f);
         }

@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
         if (present != null)
         {
             present.CollectPresent();
-            ScaleBag(1.2f);
+            ScaleBag(1.1f);
 
             spawner.SpawnPresentsAndElves();
         }

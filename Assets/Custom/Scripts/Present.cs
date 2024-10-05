@@ -10,13 +10,14 @@ public class Present : MonoBehaviour
 
     private Vector3 startPosition;
     private RandomAudioPlayer randomAudioPlayer;
+    public Transform rotatingPartTrans;
 
     public AudioClip[] presentOpenClips;
 
     // Start is called before the first frame update
     void Start()
     {
-        startPosition = transform.localPosition;
+        startPosition = rotatingPartTrans.localPosition;
         randomAudioPlayer = GetComponent<RandomAudioPlayer>();
     }
 
@@ -33,14 +34,14 @@ public class Present : MonoBehaviour
     void RotateObject()
     {
         // Rotate the object based on rotation speed and time
-        transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
+        rotatingPartTrans.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
     }
 
     void FloatObject()
     {
         // Create a smooth up and down motion using a sine wave
         float newY = startPosition.y + Mathf.Sin(Time.time * floatSpeed) * floatHeight;
-        transform.localPosition = new Vector3(transform.localPosition.x, newY, transform.localPosition.z);
+        rotatingPartTrans.localPosition = new Vector3(rotatingPartTrans.localPosition.x, newY, rotatingPartTrans.localPosition.z);
     }
 
     public void CollectPresent()
