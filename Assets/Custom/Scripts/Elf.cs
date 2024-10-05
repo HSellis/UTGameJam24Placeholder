@@ -10,7 +10,6 @@ public class Elf : MonoBehaviour
 
     private NavMeshAgent navMeshAgent;
     private Animator animator;
-    private AudioSource audioSource;
 
     // state 1: passive, state 2: active
     public int state;
@@ -25,12 +24,15 @@ public class Elf : MonoBehaviour
 
     private float currentAngle = 0f;
 
+    private RandomAudioPlayer randomAudioPlayer;
+    public AudioClip[] deathAudioClips;
+
     // Start is called before the first frame update
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
+        randomAudioPlayer = GetComponent<RandomAudioPlayer>();
 
         playerTransform = Player.Instance.transform;
         state = 1;
@@ -83,7 +85,9 @@ public class Elf : MonoBehaviour
         Player player = other.gameObject.GetComponent<Player>();
         if (player != null)
         {
-            audioSource.Play();
+
+            randomAudioPlayer.PlayRandomClip(deathAudioClips);
+            Destroy(gameObject, 0.75f);
         }
     }
 

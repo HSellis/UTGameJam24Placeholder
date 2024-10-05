@@ -7,6 +7,9 @@ public class Player : MonoBehaviour
 {
     public static Player Instance { get; private set; }
 
+    private RandomAudioPlayer randomAudioPlayer;
+    public AudioClip[] damageAudioClips;
+
     public GameObject bag;
     public Spawner spawner;
 
@@ -18,7 +21,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        randomAudioPlayer = GetComponent<RandomAudioPlayer>();
     }
 
     // Update is called once per frame
@@ -33,6 +36,7 @@ public class Player : MonoBehaviour
         if (elf != null)
         {
             ScaleBag(0.9f);
+            randomAudioPlayer.PlayRandomClip(damageAudioClips);
         }
 
         Present present = other.gameObject.GetComponent<Present>();
