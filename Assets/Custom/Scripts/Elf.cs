@@ -9,12 +9,14 @@ public class Elf : MonoBehaviour
 
     private NavMeshAgent navMeshAgent;
     private Animator animator;
+    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
 
         animator.SetFloat("Speed", 1);
     }
@@ -30,7 +32,7 @@ public class Elf : MonoBehaviour
         Player player = other.gameObject.GetComponent<Player>();
         if (player != null)
         {
-            //Debug.Log("Player!");
+            audioSource.Play();
         }
     }
 }
