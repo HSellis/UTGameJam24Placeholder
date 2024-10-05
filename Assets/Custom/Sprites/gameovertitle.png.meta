@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3bff5522055f080409a52a97ea5d860e
+guid: bee76cbbec5b4bf4cb822f9d99bf3e96
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: menuplaybutton1 1_0
+      name: gameovertitle_0
       rect:
         serializedVersion: 2
-        x: 556
-        y: 614
-        width: 1416
-        height: 363
+        x: 506
+        y: 1191
+        width: 1526
+        height: 547
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f3cfd1db5c8590c42b500f89c129fd8a
-      internalID: 923516352
+      spriteID: c1ab4ccf3b447b947a2800097ceb651f
+      internalID: -560864989
       vertices: []
       indices: 
       edges: []
@@ -147,14 +147,14 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      menuplaybutton1 1_0: 923516352
+      gameovertitle_0: -560864989
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
