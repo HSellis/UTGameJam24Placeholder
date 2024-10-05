@@ -31,8 +31,17 @@ public class Spawner : MonoBehaviour
         float z = Random.Range(minZ, maxZ);
         Vector3 presentLocation = new Vector3(x, y, z);
         GameObject presentObj = Instantiate(PresentPrefab, presentLocation, Quaternion.identity);
-        GameObject elfObj = Instantiate(ElfPrefab, presentLocation, Quaternion.identity);
-        Elf elf = elfObj.GetComponent<Elf>();
-        elf.centerPoint = presentObj.transform;
+
+        int elvesToSpawn = Random.Range(2, 4);
+        for (int i = 0; i < elvesToSpawn; i++)
+        {
+            float offsetX = Random.Range(-2f, 2f);
+            float offsetZ = Random.Range(-2f, 2f);
+            GameObject elfObj = Instantiate(ElfPrefab, presentLocation + new Vector3(offsetX, 0, offsetZ), Quaternion.identity);
+            
+            Elf elf = elfObj.GetComponent<Elf>();
+            elf.centerPoint = presentObj.transform;
+        }
+        
     }
 }
