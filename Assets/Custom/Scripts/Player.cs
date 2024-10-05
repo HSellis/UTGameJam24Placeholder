@@ -24,13 +24,19 @@ public class Player : MonoBehaviour
         Elf elf = other.gameObject.GetComponent<Elf>();
         if (elf != null)
         {
-            bag.transform.localScale = Vector3.Scale(bag.transform.localScale, new Vector3(0.9f, 0.9f, 0.9f));
+            ScaleBag(0.9f);
         }
 
         Present present = other.gameObject.GetComponent<Present>();
         if (present != null)
         {
-            GameObject.Destroy(present.gameObject);
+            Destroy(present.gameObject);
+            ScaleBag(1.1f);
         }
+    }
+
+    private void ScaleBag(float scale)
+    {
+        bag.transform.localScale = Vector3.Scale(bag.transform.localScale, new Vector3(scale, scale, scale));
     }
 }
