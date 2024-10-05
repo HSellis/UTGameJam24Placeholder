@@ -1966,6 +1966,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 659543ce13be6694fb1bf70dd4ea18d4, type: 3}
   - {fileID: 8300000, guid: 2d2539679cb9cd946817627da6f287e1, type: 3}
   - {fileID: 8300000, guid: 88bdd4464cbcd4648ad2ef751bba259a, type: 3}
+  angryAudioClips:
+  - {fileID: 8300000, guid: c9751766e3de4db4e936d61fe16e6e0e, type: 3}
+  - {fileID: 8300000, guid: e455b5b355a99cd4ea3992af0f079922, type: 3}
+  - {fileID: 8300000, guid: e392c25b250813d48aa3cc34f3082391, type: 3}
+  - {fileID: 8300000, guid: 99d1642cab4f58b49a51f1d42424dca1, type: 3}
 --- !u!54 &2581650505300905296
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2013,9 +2018,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.23
-  m_Height: 3.5
+  m_Height: 2.18
   m_Direction: 1
-  m_Center: {x: 0.03, y: 0, z: 0}
+  m_Center: {x: 0.03, y: 0.96, z: 0}
 --- !u!82 &1593222511316548093
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2072,7 +2077,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
