@@ -719,6 +719,7 @@ GameObject:
   - component: {fileID: 834704240}
   - component: {fileID: 834704239}
   - component: {fileID: 834704243}
+  - component: {fileID: 834704244}
   m_Layer: 0
   m_Name: "P\xE4kapikk"
   m_TagString: Untagged
@@ -836,6 +837,19 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &834704244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834704238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 268d9fbec88a5ad47baedc571c8f3a33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1590477023}
 --- !u!1001 &858305473
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1122,6 +1136,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 446895413}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1590477023 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+  m_PrefabInstance: {fileID: 858305473}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1761467813
 GameObject:
   m_ObjectHideFlags: 0
