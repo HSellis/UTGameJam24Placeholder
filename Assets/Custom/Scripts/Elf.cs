@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Elf : MonoBehaviour
 {
-    public Transform target;
+    private Transform target;
 
     private NavMeshAgent navMeshAgent;
     private Animator animator;
@@ -18,6 +18,7 @@ public class Elf : MonoBehaviour
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
 
+        target = Player.Instance.transform;
         animator.SetFloat("Speed", 1);
     }
 
