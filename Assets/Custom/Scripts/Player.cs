@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
         if (present != null)
         {
             Destroy(present.gameObject);
-            ScaleBag(1.1f);
+            ScaleBag(2f);
 
             spawner.SpawnPresentsAndElves();
         }
