@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class Elf : MonoBehaviour
 {
     private Transform playerTransform;
+    public LayerMask obstacleMask;   // Layer mask for obstacles (like walls)
 
     private NavMeshAgent navMeshAgent;
     private Animator animator;
@@ -18,6 +19,9 @@ public class Elf : MonoBehaviour
     public float radius = 5.0f;     // Radius of the circle
     public float speed = 2.0f;      // Speed at which the agent moves along the circle
     public float angularSpeed = 1.0f; // How fast the agent moves around the circle (in radians)
+
+    public float detectionRange = 10f;  // How far the NPC can see
+    public float fieldOfViewAngle = 60f; // Field of view angle in degrees (half-angle, i.e., 60 means 120 degrees total)
 
     private float currentAngle = 0f;
 
@@ -49,6 +53,11 @@ public class Elf : MonoBehaviour
 
             // Move the agent to the next position along the circle
             MoveToPointOnCircle();
+
+            if (CanSeePlayer())
+            {
+                state = 2;
+            }
         }
         else
         {
@@ -76,5 +85,64 @@ public class Elf : MonoBehaviour
         {
             audioSource.Play();
         }
+    }
+
+    // Method to check if there is an obstacle between the NPC and the player
+    bool IsPlayerBehindObstacle()
+    {
+        // Direction from NPC to player
+        Vector3 directionToPlayer = playerTransform.position - transform.position;
+
+        // Perform the raycast, using the obstacle mask to detect walls and obstacles
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, directionToPlayer, out hit, detectionRange, obstacleMask))
+        {
+            // If the ray hits something before reaching the player, it means there's an obstacle in the way
+            if (hit.transform != playerTransform)
+            {
+                Debug.Log("Player is blocked by " + hit.transform.name);
+                return true;
+            }
+        }
+
+        // No obstacle detected
+        return false;
+    }
+
+    // Method to check if the NPC can see the player
+    bool CanSeePlayer()
+    {
+        // Calculate direction from NPC to player
+        Vector3 directionToPlayer = playerTransform.position - transform.position;
+        directionToPlayer.y = 0; // Ignore Y axis to only check in 2D (horizontal plane)
+
+        // Calculate distance to the player
+        float distanceToPlayer = directionToPlayer.magnitude;
+
+        // Check if the player is within detection range
+        if (distanceToPlayer > detectionRange)
+        {
+            return false;
+        }
+
+        // Normalize the direction vector
+        directionToPlayer.Normalize();
+
+        // Calculate the angle between the NPC's forward direction and the direction to the player
+        float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
+
+        // Check if the player is within the NPC's field of view
+        if (angleToPlayer < fieldOfViewAngle)
+        {
+            // Perform a raycast to see if there are any obstacles between the NPC and the player
+            if (!IsPlayerBehindObstacle())
+            {
+                // Player is within field of view and no obstacles are blocking sight
+                return true;
+            }
+        }
+
+        // Player is either outside the field of view or behind an obstacle
+        return false;
     }
 }
