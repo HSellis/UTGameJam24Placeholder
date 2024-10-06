@@ -10,6 +10,7 @@ public class Present : MonoBehaviour
 
     private Vector3 startPosition;
     private RandomAudioPlayer randomAudioPlayer;
+    private MeshRenderer meshRenderer;
     public Transform rotatingPartTrans;
 
     public AudioClip[] presentOpenClips;
@@ -23,6 +24,11 @@ public class Present : MonoBehaviour
     {
         startPosition = rotatingPartTrans.localPosition;
         randomAudioPlayer = GetComponent<RandomAudioPlayer>();
+        meshRenderer = rotatingPartTrans.GetComponent<MeshRenderer>();
+        foreach (Material material in meshRenderer.materials )
+        {
+            material.color = new Color(Random.value, Random.value, Random.value);
+        }
     }
 
     // Update is called once per frame

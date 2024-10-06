@@ -23722,10 +23722,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373e4bbba47ea6d4697d6fbb25b93de9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minX: -10
-  maxX: 10
-  minZ: -10
-  maxZ: 10
+  minX: -40
+  maxX: 40
+  minZ: -40
+  maxZ: 40
   y: 0.5
   PresentPrefab: {fileID: 5506926700778666864, guid: e2f03f26e4a400849812789577f9a304, type: 3}
   ElfPrefab: {fileID: 7557168912844838109, guid: 12ba3f5858e4dfb44a33d56559da07a4, type: 3}
