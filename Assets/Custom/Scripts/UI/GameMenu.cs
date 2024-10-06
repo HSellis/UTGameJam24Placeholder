@@ -15,6 +15,7 @@ public class GameMenu : MonoBehaviour
     void Start()
     {
         GameMenuPanel.SetActive(false);
+        Cursor.visible = false;
     }
 
     // Update is called once per frame

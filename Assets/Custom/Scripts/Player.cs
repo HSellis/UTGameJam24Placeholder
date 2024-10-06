@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     private RandomAudioPlayer randomAudioPlayer;
     private ThirdPersonController thirdPersonController;
     public AudioClip[] damageAudioClips;
+    public AudioClip[] powerUpAudioClips;
 
     public GameObject bag;
     public Spawner spawner;
@@ -92,6 +93,7 @@ public class Player : MonoBehaviour
         }
 
         Instantiate(powerUpIcon, powerUpTransform.position, Quaternion.identity, powerUpTransform);
+        randomAudioPlayer.PlayRandomClip(powerUpAudioClips);
         Invoke("EndPowerUp", powerUpDuration);
     }
 

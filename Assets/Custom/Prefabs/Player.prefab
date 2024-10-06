@@ -1488,16 +1488,16 @@ MonoBehaviour:
   SpeedChangeRate: 10
   LandingAudioClip: {fileID: 8300000, guid: ff697d3070687ce4583faa0561a145a2, type: 3}
   FootstepAudioClips:
-  - {fileID: 8300000, guid: 72f526a6a9890f643a88e85a61c86c8a, type: 3}
-  - {fileID: 8300000, guid: 85016e0f2b01da248b9663dd49a161b0, type: 3}
-  - {fileID: 8300000, guid: 186de84b3207156479abe98f4958fed0, type: 3}
-  - {fileID: 8300000, guid: 1a91fcd19acf1e54bba0945d9f390849, type: 3}
-  - {fileID: 8300000, guid: 14e8a8d2158bec840b56c54f5266e692, type: 3}
+  - {fileID: 8300000, guid: 0581073775f209d418f0902f1feac00e, type: 3}
+  - {fileID: 8300000, guid: d1585f5c1cfe24444ba5d1798e362d2d, type: 3}
+  - {fileID: 8300000, guid: 29ee0e15f090ea447bfb2334274b2b67, type: 3}
+  - {fileID: 8300000, guid: 192fd0a982986b144969fa04431e3e83, type: 3}
+  - {fileID: 8300000, guid: b8aedaca0c4b5574d8dfd5275abf0b33, type: 3}
   - {fileID: 8300000, guid: 29841e7d5bbfb5b419c9ad16ca8bc4c1, type: 3}
-  - {fileID: 8300000, guid: dd1af302b8902684d9381de1f2d3a5af, type: 3}
-  - {fileID: 8300000, guid: 67c8b33e424ccdc4486edf538ab91c5a, type: 3}
-  - {fileID: 8300000, guid: 274649b0e221539409070ebf6c18918b, type: 3}
-  - {fileID: 8300000, guid: a3194b8bbc96ef84fab1f98f4b7dae3e, type: 3}
+  - {fileID: 8300000, guid: 06034752ce0a907408f878e7a1c4db84, type: 3}
+  - {fileID: 8300000, guid: c657c6c077e4ea54c90fb820eae2877d, type: 3}
+  - {fileID: 8300000, guid: 93c3aafe37805ad4eab3fbc2bcfa985f, type: 3}
+  - {fileID: 8300000, guid: 9223b22b06dae49488c9028eee9f1702, type: 3}
   FootstepAudioVolume: 0.3
   JumpHeight: 1.2
   Gravity: -15
@@ -1668,7 +1668,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1c4dc141644a4c4479805ab6031d04f0, type: 3}
   - {fileID: 8300000, guid: 777f58ab2b8d1274491cd026fbbdfcaa, type: 3}
   - {fileID: 8300000, guid: 5327957a417740140a29e808bea13dea, type: 3}
-  bag: {fileID: 0}
+  powerUpAudioClips:
+  - {fileID: 8300000, guid: 71ccf7e4b0e671347a14d9aa998b6bad, type: 3}
+  bag: {fileID: 7764102300088786565}
   spawner: {fileID: 0}
   gameMenu: {fileID: 0}
 --- !u!136 &5591388938643494956
@@ -3998,5 +4000,10 @@ PrefabInstance:
 --- !u!4 &6986333490877137983 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 50364814407e0b441b8064d3841a9bab, type: 3}
+  m_PrefabInstance: {fileID: 7457618167370146772}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7764102300088786565 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 50364814407e0b441b8064d3841a9bab, type: 3}
   m_PrefabInstance: {fileID: 7457618167370146772}
   m_PrefabAsset: {fileID: 0}
