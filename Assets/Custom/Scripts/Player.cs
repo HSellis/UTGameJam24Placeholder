@@ -8,13 +8,15 @@ public class Player : MonoBehaviour
     public static Player Instance { get; private set; }
 
     private List<Present> collectedPresents = new List<Present> ();
-    public float bagSize = 1.0f;
+    public int collectedPresentsNum = 0;
 
     private RandomAudioPlayer randomAudioPlayer;
     public AudioClip[] damageAudioClips;
 
     public GameObject bag;
     public Spawner spawner;
+
+    public GameMenu gameMenu;
 
     private void Awake()
     {
@@ -38,14 +40,14 @@ public class Player : MonoBehaviour
         Elf elf = other.gameObject.GetComponent<Elf>();
         if (elf != null)
         {
-            bagSize -= 0.1f;
-            Debug.Log(bagSize);
-            ScaleBag(bagSize);
+            collectedPresentsNum -= 1;
+            ScaleBag(1 + collectedPresentsNum * 0.1f);
+            gameMenu.UpdatePresentsText(collectedPresentsNum);
             randomAudioPlayer.PlayRandomClip(damageAudioClips);
 
-            if (bagSize < 0.5f)
+            if (collectedPresentsNum < 0)
             {
-                Debug.Log("You lost!");
+                gameMenu.DisplayGameOver(collectedPresentsNum);
             }
         }
 
@@ -54,9 +56,9 @@ public class Player : MonoBehaviour
         {
             present.CollectPresent();
             collectedPresents.Add(present);
-            bagSize += 0.1f;
-            Debug.Log(bagSize);
-            ScaleBag(bagSize);
+            collectedPresentsNum += 1;
+            ScaleBag(1 + collectedPresentsNum * 0.1f);
+            gameMenu.UpdatePresentsText(collectedPresentsNum);
 
             spawner.SpawnPresentsAndElves();
         }
@@ -64,6 +66,6 @@ public class Player : MonoBehaviour
 
     private void ScaleBag(float scale)
     {
-        bag.transform.localScale = new Vector3(scale, scale, scale);
+        bag.transform.localScale = Vector3.one * scale;
     }
 }
