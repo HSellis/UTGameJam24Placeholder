@@ -10,6 +10,13 @@ public class Elf : MonoBehaviour
 
     private NavMeshAgent navMeshAgent;
     private Animator animator;
+    private Rigidbody rb;
+
+    public float minSprintTimeout = 5f;
+    public float maxSprintTimeout = 15f;
+    public float minSpeed = 1f;
+    public float avgSpeed = 2f;
+    public float maxSpeed = 3f;
 
     // state 1: passive, state 2: active
     public int state;
@@ -27,7 +34,6 @@ public class Elf : MonoBehaviour
     public float explosionForce = 250;
 
     private RandomAudioPlayer randomAudioPlayer;
-    private Rigidbody rb;
     public AudioClip[] deathAudioClips;
     public AudioClip[] angryAudioClips;
 
@@ -42,6 +48,8 @@ public class Elf : MonoBehaviour
         playerTransform = Player.Instance.transform;
         state = 1;
         animator.SetFloat("Speed", 1);
+
+        Invoke("ToggleSprint", maxSprintTimeout);
     }
 
     // Update is called once per frame
@@ -93,6 +101,25 @@ public class Elf : MonoBehaviour
         if (navMeshAgent.enabled)
         {
             navMeshAgent.SetDestination(nextPoint);
+        }
+    }
+
+    void ToggleSprint()
+    {
+        if (state == 2)
+        {
+            if (navMeshAgent.speed < avgSpeed)
+            {
+                float newSpeed = Random.Range(avgSpeed, maxSpeed);
+                navMeshAgent.speed = newSpeed;
+            } else
+            {
+                float newSpeed = Random.Range(avgSpeed, maxSpeed);
+                navMeshAgent.speed = newSpeed;
+            }
+            float timeoutTime = Random.Range(minSprintTimeout, maxSprintTimeout);
+            Invoke("ToggleSprint", timeoutTime);
+            randomAudioPlayer.PlayRandomClip(angryAudioClips);
         }
     }
 

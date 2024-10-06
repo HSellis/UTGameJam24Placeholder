@@ -4384,6 +4384,11 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 0
+  minSprintTimeout: 5
+  maxSprintTimeout: 15
+  minSpeed: 0.5
+  avgSpeed: 2.5
+  maxSpeed: 6
   state: 0
   centerPoint: {fileID: 0}
   radius: 5
