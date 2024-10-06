@@ -21,7 +21,7 @@ public class Elf : MonoBehaviour
     // state 1: passive, state 2: active
     public int state;
 
-    public Transform centerPoint;   // Center of the circle (set a reference point for the circle's center)
+    public Vector3 spawnPoint;   // Center of the circle (set a reference point for the circle's center)
     public float radius = 5.0f;     // Radius of the circle
     public float speed = 2.0f;      // Speed at which the agent moves along the circle
     public float angularSpeed = 1.0f; // How fast the agent moves around the circle (in radians)
@@ -36,6 +36,7 @@ public class Elf : MonoBehaviour
     private RandomAudioPlayer randomAudioPlayer;
     public AudioClip[] deathAudioClips;
     public AudioClip[] angryAudioClips;
+    public AudioClip[] passiveAudioClips;
 
     // Start is called before the first frame update
     void Start()
@@ -67,11 +68,7 @@ public class Elf : MonoBehaviour
             }
 
             // Move the agent to the next position along the circle
-            if (centerPoint != null)
-            {
-                MoveToPointOnCircle();
-
-            }
+            MoveToPointOnCircle();
 
             if (CanSeePlayer())
             {
@@ -81,6 +78,11 @@ public class Elf : MonoBehaviour
         }
         else
         {
+            if (!CanSeePlayer())
+            {
+                randomAudioPlayer.PlayRandomClip(passiveAudioClips);
+                state = 1;
+            }
             if (navMeshAgent.enabled)
             {
                 navMeshAgent.SetDestination(playerTransform.position);
@@ -92,9 +94,9 @@ public class Elf : MonoBehaviour
     {
         // Calculate the position of the next point on the circle
         Vector3 nextPoint = new Vector3(
-            centerPoint.position.x + Mathf.Cos(currentAngle) * radius,
-            centerPoint.position.y,
-            centerPoint.position.z + Mathf.Sin(currentAngle) * radius
+            spawnPoint.x + Mathf.Cos(currentAngle) * radius,
+            spawnPoint.y,
+            spawnPoint.z + Mathf.Sin(currentAngle) * radius
         );
 
         // Move the agent towards the next point
@@ -106,19 +108,21 @@ public class Elf : MonoBehaviour
 
     void ToggleSprint()
     {
+        if (navMeshAgent.speed < avgSpeed)
+        {
+            float newSpeed = Random.Range(avgSpeed, maxSpeed);
+            navMeshAgent.speed = newSpeed;
+        }
+        else
+        {
+            float newSpeed = Random.Range(avgSpeed, maxSpeed);
+            navMeshAgent.speed = newSpeed;
+        }
+        float timeoutTime = Random.Range(minSprintTimeout, maxSprintTimeout);
+        Invoke("ToggleSprint", timeoutTime);
+
         if (state == 2)
         {
-            if (navMeshAgent.speed < avgSpeed)
-            {
-                float newSpeed = Random.Range(avgSpeed, maxSpeed);
-                navMeshAgent.speed = newSpeed;
-            } else
-            {
-                float newSpeed = Random.Range(avgSpeed, maxSpeed);
-                navMeshAgent.speed = newSpeed;
-            }
-            float timeoutTime = Random.Range(minSprintTimeout, maxSprintTimeout);
-            Invoke("ToggleSprint", timeoutTime);
             randomAudioPlayer.PlayRandomClip(angryAudioClips);
         }
     }

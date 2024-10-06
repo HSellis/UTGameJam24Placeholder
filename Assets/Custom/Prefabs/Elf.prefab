@@ -4390,11 +4390,11 @@ MonoBehaviour:
   avgSpeed: 2.5
   maxSpeed: 6
   state: 0
-  centerPoint: {fileID: 0}
+  spawnPoint: {x: 0, y: 0, z: 0}
   radius: 5
   speed: 2
   angularSpeed: 1
-  detectionRange: 10
+  detectionRange: 20
   fieldOfViewAngle: 60
   explosionForce: 750
   deathAudioClips:
@@ -4408,6 +4408,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e455b5b355a99cd4ea3992af0f079922, type: 3}
   - {fileID: 8300000, guid: e392c25b250813d48aa3cc34f3082391, type: 3}
   - {fileID: 8300000, guid: 99d1642cab4f58b49a51f1d42424dca1, type: 3}
+  passiveAudioClips:
+  - {fileID: 8300000, guid: 3e658c803d660584d951a7479470bfe2, type: 3}
+  - {fileID: 8300000, guid: 19a97fdfe154fb24c802fde3a101f587, type: 3}
+  - {fileID: 8300000, guid: 40e514f90c284e0488007aa43ee03b84, type: 3}
+  - {fileID: 8300000, guid: 51173abda2b2f6740a52e35fe4fc4e8a, type: 3}
+  - {fileID: 8300000, guid: 7a5558e8e237f4e4aafa385880f9965f, type: 3}
+  - {fileID: 8300000, guid: 90fc640d81610f446881dd5fffa00bb8, type: 3}
 --- !u!54 &2581650505300905296
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -38,7 +38,7 @@ public class GameMenu : MonoBehaviour
     public void DisplayGameOver(int presentsNumber)
     {
         GameMenuPanel.SetActive(true);
-        GameOverText.text = "Max number of presets in bag: " + maxNumberPresents.ToString();
+        GameOverText.text = "Max number of presents in bag: " + maxNumberPresents.ToString();
         Time.timeScale = 0.01f;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
