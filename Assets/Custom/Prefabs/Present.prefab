@@ -213,6 +213,9 @@ MonoBehaviour:
   rotatingPartTrans: {fileID: 4946581870480307246}
   presentOpenClips:
   - {fileID: 8300000, guid: e1df3552ef3806c428bf798738207817, type: 3}
+  powerUpType: SPEED
+  powerUpDuration: 5
+  powerUpIcon: {fileID: 1333050182747577968, guid: fc7f0a0fd7cc8584ab98bfbf6d3a3bae, type: 3}
 --- !u!65 &8889234121985539732
 BoxCollider:
   m_ObjectHideFlags: 0
