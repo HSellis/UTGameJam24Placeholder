@@ -20,11 +20,13 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
+        AudioManager.instance.PlayMenuButtonSound();
         SceneManager.LoadScene(1);
     }
 
     public void QuitGame()
     {
+        AudioManager.instance.PlayMenuButtonSound();
         Application.Quit();
     }
 }

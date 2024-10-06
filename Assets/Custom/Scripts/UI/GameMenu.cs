@@ -11,6 +11,8 @@ public class GameMenu : MonoBehaviour
     public TextMeshProUGUI HUDText;
     public TextMeshProUGUI GameOverText;
 
+    private int maxNumberPresents = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,13 +28,17 @@ public class GameMenu : MonoBehaviour
 
     public void UpdatePresentsText(int presentsNumber)
     {
+        if (presentsNumber > maxNumberPresents)
+        {
+            maxNumberPresents = presentsNumber;
+        }
         HUDText.text = "Presents: " + presentsNumber.ToString();
     }
 
     public void DisplayGameOver(int presentsNumber)
     {
         GameMenuPanel.SetActive(true);
-        GameOverText.text = "Max number of presets in bag: " + presentsNumber.ToString();
+        GameOverText.text = "Max number of presets in bag: " + maxNumberPresents.ToString();
         Time.timeScale = 0.01f;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -42,17 +48,20 @@ public class GameMenu : MonoBehaviour
     {
         Time.timeScale = 1;
         Cursor.visible = false;
+        AudioManager.instance.PlayMenuButtonSound();
         SceneManager.LoadScene(1);
     }
 
     public void GoToMainMenu()
     {
         Time.timeScale = 1;
+        AudioManager.instance.PlayMenuButtonSound();
         SceneManager.LoadScene(0);
     }
 
     public void QuitGame()
     {
+        AudioManager.instance.PlayMenuButtonSound();
         Application.Quit();
     }
 }
